@@ -15,3 +15,8 @@ I will try to publish my recipe in the near future.
 You need to create a recipe of the MAKER type at https://ifttt.com/maker with the event_name of change_wallpaper. It then needs to take the url in value1 to update your android wallpaper.
 
 You need to create a cron job that runs probably first thing in the morning 1AM or so, when you are sleeping but have wifi on.
+
+**TODO:**
+* move ifttt api key to separate file
+* use proper flags for options
+* handle duplicate dates sanely, instead of ignoring 
