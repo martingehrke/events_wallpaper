@@ -2,10 +2,11 @@ Brief undetailed write up
 
 This script uses IFTTT (AKA IF) to change the wallpaper of your android device based on the day and a couple files.
 
-FILES:
+**FILES:**
 * change | this needs to run once a day  
 * random | list of random image URLs in case there is no match  
 * events | list of dates in YYYYMMDD format with a space then a URL  
+* crontab.example | edit this to add the right path to change and load with crontab ./crontab.example
 
 change runs once a day and matches a line in the events file. it then posts the url to IFTTT which will update the background of your cellphone.
 
