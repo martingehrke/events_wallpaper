@@ -21,3 +21,4 @@ You need to have the ifttt android app on your phone so it can change the backgr
 * move ifttt api key to separate file
 * use proper flags for options
 * handle duplicate dates sanely, instead of ignoring 
+* remove past dates from file

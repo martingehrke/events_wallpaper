@@ -1,0 +1,4 @@
+# update this file with the correct path and then install
+# with crontab crontab.example
+# the below line will run the script at 1:05 AM every morning
+5 1 * * * /bin/bash /home/path/to/change >/dev/null 2>&1
