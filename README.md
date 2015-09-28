@@ -2,6 +2,14 @@ Brief undetailed write up
 
 This script uses IFTTT (AKA IF) to change the wallpaper of your android device based on the day and a couple files.
 
+**USES**
+* set your wallpaper to your favorite football teams on gameday
+* set your wallpaper on your REDDIT cakeday
+* " for your wedding
+* last day of school
+* first day of school
+* days you are on support
+
 **FILES:**
 * change | this needs to run once a day  
 * random | list of random image URLs in case there is no match  
