@@ -1,9 +1,50 @@
 #!/bin/bash
+# Author: Martin Gehrke
+# please read the README
 
 EVENTS_FILE="./events"
 RANDOM_FILE="./random"
+YEARLY_FILE="./yearly"
 TODAY=$(date +%Y%m%d)
-IFKEYS=$(grep -v ^# ./IFKEYS)
+IFKEYS_FILE="./IFKEYS"
+
+PROG=$(basename ${0})
+
+usage() {
+    cat <<EOF
+    "${PROG}": change [-e file] [-f file] [-k file] [-r file]
+    -e : use file for events, default is ./events
+    -f : use file for IFTTT api keys, default is ./IFKEYS
+    -k : specify IFKEY on cmdline, only one for now
+    -r : use file for random image urls, default is ./random
+    -y : use file for yearly events, default is ./yearly
+EOF
+    exit 1
+}
+
+while getopts e:f:k:r:y: f
+do
+    case "${f}" in
+    e) EVENTS_FILE="${OPTARG}"
+    ;;
+    f) IFKEYS_FILE="${OPTARG}"
+    ;;
+    k) IFKEYS="${OPTARG}" 
+    ;;
+    r) RANDOM_FILE="${OPTARG}"
+    ;;
+    y) YEARLY_FILE="${OPTARG}"
+    ;;
+    h) usage
+    ;;
+    *) usage
+    ;;
+    esac
+done
+
+if [ -z "${IFKEYS}" ]; then
+    IFKEYS=$(grep -v ^# "${IFKEYS_FILE}")
+fi
 
 # get url for today
 SET_TO_URL=$( awk "/${TODAY}/ {print $2}" ${EVENTS_FILE} )
