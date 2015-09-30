@@ -3,7 +3,7 @@
 EVENTS_FILE="./events"
 RANDOM_FILE="./random"
 TODAY=$(date +%Y%m%d)
-IFKEY="<add ifttt maker api key>"
+IFKEYS=$(grep -v ^# ./IFKEYS)
 
 # get url for today
 SET_TO_URL=$( awk "/${TODAY}/ {print $2}" ${EVENTS_FILE} )
@@ -13,8 +13,10 @@ if [ -z "${SET_TO_URL}" ]; then
 	SET_TO_URL=$( /usr/bin/shuf -n1 "${RANDOM_FILE}" )
 fi
 
-IF_POST="https://maker.ifttt.com/trigger/change_wallpaper/with/key/${IFKEY}"
 
 #do the magic, this will only work if you have a correctly settup ifttt recipe
-/usr/bin/curl -i -H "Content-Type: application/json" \
-    -X POST --data "{\"value1\" : \"${SET_TO_URL}\"}" "${IF_POST}" 
+for KEY in ${IFKEYS}; do
+	IF_POST="https://maker.ifttt.com/trigger/change_wallpaper/with/key/${KEY}"
+	/usr/bin/curl -i -H "Content-Type: application/json" \
+	    -X POST --data "{\"value1\" : \"${SET_TO_URL}\"}" "${IF_POST}" 
+done
