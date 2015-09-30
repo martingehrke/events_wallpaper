@@ -29,7 +29,6 @@ You need to create a cron job that runs probably first thing in the morning 1AM 
 You need to have the ifttt android app on your phone so it can change the background.
 
 **TODO:**
-* use proper flags for options
 * handle duplicate dates sanely, instead of ignoring 
 * remove past dates from file
 * support for repeating yearly entries (MMDD)
